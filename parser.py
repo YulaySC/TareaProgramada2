@@ -316,19 +316,19 @@ argparser.add_argument('--logging',
                        action='store_true',
                        help='Enable logging',
                        dest='log')
-
-argparser.add_argument('--db',
-                       type=file,
-                       help='Database file',
-                       dest='db_file')
+print("bye")
+##argparser.add_argument('--db',
+##                       type=file,
+##                       help='Database file',
+##                       dest='db_file')
 #
 def main():
     print ('Welcome to PyLogic.  Type "help" for help.')
     
-    args = argparser.parse_args()
-    db = read_db(args.db_file) if args.db_file else {}
-    if args.log:
-        logging.basicConfig(level=logging.DEBUG)
+##    args = argparser.parse_args()
+##    db = read_db(args.db_file) if args.db_file else {}
+##    if args.log:
+##        logging.basicConfig(level=logging.DEBUG)
 
     print_db(db)
     while True:
