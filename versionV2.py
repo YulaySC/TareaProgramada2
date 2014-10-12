@@ -173,7 +173,6 @@ def lexicalTYPE (data):
            
         for tok in lexer:
             return (tok.type)
-        
 def RetlexicalTYPE(data):
     lexer = lex.lex()
     lexer.input(data)
@@ -191,23 +190,104 @@ def RetlexicalTYPE(data):
 
 def PARENT(data):
     elementos=RetlexicalTYPE(data)
-    cont=len(elementos)-1
+    cont=0
     contador=len(elementos)-1
     
-    print (cont)
-    print(contador)
+    #print (cont)
+    #print(contador)
     existe=False
-    while(cont>=0):
+    while(cont<(len(elementos)-1)):
         if((elementos[cont])=='LPAREN'):
             if((elementos[contador-1])=='RPAREN'):
                 existe=True
                 return (existe)
-        cont=cont-1
+        cont=cont+1
 
     return (existe)
-            
 
 def arg(data):
+    elementos=RetlexicalTYPE(data)
+    cont=0
+    contador=len(elementos)-1
+    listaARGS=[]
+    #print (cont)
+    #print(contador)
+    existe=True
+    while(cont<(len(elementos)-1)):
+        if((elementos[cont])=='LPAREN'):
+            cont=cont+1
+            while((elementos[contador-1]=='RPAREN')and (cont<contador-1)):
+                if((elementos[cont]=='NAME')or(elementos[cont]=='ID')):
+                    listaARGS.append(elementos[cont])
+                    cont=cont+1
+                else:
+                    if((elementos[cont]=='COMMA')or(elementos[cont]=='SEMI')or(elementos[cont]=='RPAREN')or(elementos[cont]=='LPAREN')or(elementos[cont]=='COLON')or(elementos[cont]=='MINUS')):
+                        cont=cont+1
+                    else:
+                        print('Simbolo invalido:existe un simbolo erroneo dentro de la linea'+elementos[cont])
+                        return []
+                
+        cont=cont+1
+            
+    return listaARGS
+def argvalores(data):
+    elementos=RetlexicalTYPE(data)
+    cont=0
+    contador=len(elementos)-1
+    listaARGS=[]
+    valores=lexicalVALUE (data)
+    listavaloresARG=[]
+    #print (cont)
+    #print(contador)
+    existe=True
+    while(cont<(len(elementos)-1)):
+        if((elementos[cont])=='LPAREN'):
+            cont=cont+1
+            while((elementos[contador-1]=='RPAREN')and (cont<contador-1)):
+                if((elementos[cont]=='NAME')or(elementos[cont]=='ID')):
+                    listavaloresARG.append(valores[cont])
+                    cont=cont+1
+                else:
+                    if((elementos[cont]=='COMMA')or(elementos[cont]=='SEMI')or(elementos[cont]=='RPAREN')or(elementos[cont]=='LPAREN')or(elementos[cont]=='COLON')or(elementos[cont]=='MINUS')):
+                        cont=cont+1
+                    else:
+                        print('Simbolo invalido:existe un simbolo erroneo dentro de la linea'+valores[cont])
+                        return []
+                
+        cont=cont+1
+            
+    return listavaloresARG
+
+def argvalores(data):
+    elementos=RetlexicalTYPE(data)
+    cont=0
+    contador=len(elementos)-1
+    listaARGS=[]
+    valores=lexicalVALUE (data)
+    listavaloresARG=[]
+    #print (cont)
+    #print(contador)
+    existe=True
+    while(cont<(len(elementos)-1)):
+        if((elementos[cont])=='LPAREN'):
+            cont=cont+1
+            while((elementos[contador-1]=='RPAREN')and (cont<contador-1)):
+                if((elementos[cont]=='NAME')or(elementos[cont]=='ID')):
+                    listavaloresARG.append(valores[cont])
+                    cont=cont+1
+                else:
+                    if((elementos[cont]=='COMMA')or(elementos[cont]=='SEMI')or(elementos[cont]=='RPAREN')or(elementos[cont]=='LPAREN')or(elementos[cont]=='COLON')or(elementos[cont]=='MINUS')):
+                        cont=cont+1
+                    else:
+                        print('Simbolo invalido:existe un simbolo erroneo dentro de la linea'+valores[cont])
+                        return []
+                
+        cont=cont+1
+            
+    return listavaloresARG
+
+
+def lexicalVALUE (data):
     lexer = lex.lex()
     lexer.input(data)
     elem=[]
@@ -215,22 +295,62 @@ def arg(data):
         tok = lexer.token()
         if not tok: break      # No more input
         #tok.line
-        elem.append(tok.type)
-        return (elem)
+        elem.append(tok.value)
+        #return (elem)
            
         for tok in lexer:
-            elemn.append(tok.type)
-            return (elemn)
-        
-def lexicalVALUE (data):
-    lexer.input(data)
-    while True:
-        tok = lexer.token()
-        if not tok: break      # No more input
-        return(tok.value)
-           
-        for tok in lexer:
-            return(tok.value)
+            elem.append(tok.value)
+    return (elem)
+def resultunificacion(list1,list2,list3,list4):
+    Boolean=False
+    cont=0
+    if(len(list1)==len(list2)):
+        t=True
+        while (cont<=(len(list1)-1)):
+            if((list1[cont]==list2[cont])and(list3[cont]==list4[cont])):
+                cont=cont+1
+            else:
+                if((list1[cont]=='ID')or(list2[cont]=='ID')):
+                    if(list1[cont]=='ID'):
+                        print(list3[cont]+' '+'is'+' '+list4[cont])
+                    if(list2[cont]=='ID'):
+                        print(list4[cont]+' '+'is'+' '+list3[cont])
+                    cont=cont+1
+                else:
+                    t=False
+                    break
+                    
+        if(t==True):
+            Boolean=True
+            
+    else:
+        print('La cantidad de parametros no coincide')
+        return Boolean
+    return Boolean 
+    
+def unificacion(list1,list2,list3,list4):
+    Boolean=False
+    cont=0
+    if(len(list1)==len(list2)):
+        t=True
+        while (cont<=(len(list1)-1)):
+            if((list1[cont]==list2[cont])and(list3[cont]==list4[cont])):
+                cont=cont+1
+            else:
+                if((list1[cont]=='ID')or(list2[cont]=='ID')):
+                    cont=cont+1
+                else:
+                    t=False
+                    break
+                    
+        if(t==True):
+            Boolean=True
+            
+    else:
+        print('La cantidad de parametros no coincide')
+        return Boolean
+    return Boolean 
+    
 
 def sintaxis():
  print ('Welcome to SWI-Prolog (Multi-threaded, 32 bits, Version 6.6.4 n/Copyright (c) 1990-2013 University of Amsterdam, VU Amsterdam n/SWI-Prolog comes with ABSOLUTELY NO WARRANTY. This is free software, n/and you are welcome to redistribute it under certain conditions. n/Please visit http://www.swi-prolog.org for details. n/For help, use ?- help(Topic). or ?- apropos(Word).')
@@ -238,6 +358,7 @@ def sintaxis():
  datos=[]
  lexer = lex.lex()
  elementos=[]
+ valores=[]
  y=False
  boolean= False
  if (val1=='<define>'):
@@ -247,41 +368,84 @@ def sintaxis():
          print ('>>')
          val1=input()
          data=val1
-         cont=0
+         #cont=0
          elementos=RetlexicalTYPE(data)
+         valores=lexicalVALUE(data)
+         paren=PARENT(data)
+         premisa=[]
+         predicados=[]
          contlistelem=len(elementos)-1
-         if (elementos[0]=='NAME'):
-             if(elementos[contlistelem]=='PERIOD'):
-                 if (val1!='</define>.'):
-                     datos.append(val1)
-        #print(datos[cont])
-                     cont=cont+1
-                     print ('>>')
-                     val1=input()
-    #print ('salio')
+         
          if (val1=='</define>.'):
              y=True
          else:
-             print ('Valor invalido')
-             print ('>>')
-             val1=input()
-        
+             if (elementos[0]=='NAME'):
+                 if(elementos[contlistelem]=='PERIOD'):
+                     if(paren==True):
+                         vraielementos=arg(data)
+                         valuelem=argvalores(data)
+                         #print(valuelem)
+                         premisa.append(valores[0])
+                         premisa.append(vraielementos)
+                         premisa.append(valuelem)
+                         datos.append(premisa)
+                         
+                    
+                     else:
+                         print ('Valor invalido:Defina parametros entre paréntesis')
+                 else:
+                     print ('Valor invalido:Recuerde agregar punto')
+             else:
+                 print ('Valor invalido')
+         
  if(val1=='</define>.'):
      print('?')
      val2=input()
+     data1=val2
      int=0
      x=False
-     while(x==False):
-         for i in range(0,len(datos)):
-             cont=cont-1
-             if(val2==datos[cont]):
-                 boolean=True
-             cont=cont-1
-         x=True
-     if(boolean==True):
-         print('Yes')
+     lista1=[]
+     revisar1=RetlexicalTYPE(data1)
+     revisar2=lexicalVALUE(data1)
+     revisar3=PARENT(data1)
+     revisar4=[]
+     contrevisar1=len(revisar1)-1
+     if (revisar1[0]=='NAME'):
+                 if(revisar1[contrevisar1]=='PERIOD'):
+                     if(revisar3==True):
+                         vraielementos1=arg(data1)
+                         valuelem1=argvalores(data1)
+                         #print(valuelem)
+                         lista1.append(revisar2[0])
+                         lista1.append(vraielementos1)
+                         lista1.append(valuelem1)
+                         
+                         while(x==False):
+                             for i in range(0,len(datos)):
+                                 cont=len(datos)-1
+                                 while(cont>=0):
+                                     lista2=datos[cont]
+                                     if(revisar2[0]==lista2[0]):
+                                         listatipos=lista2[1]
+                                         listavalores=lista2[2]
+                                         unificador=unificacion(vraielementos1,listatipos,valuelem1,listavalores)
+                                         if(unificador==True):
+                                             varables=resultunificacion(vraielementos1,listatipos,valuelem1,listavalores)
+                                             boolean=True
+                                     cont=cont-1
+                             x=True
+                         if(boolean==True):
+                             print('Yes')
+                         else:
+                             print('No')
+                    
+                     else:
+                         print ('Valor invalido:Defina parametros entre paréntesis')
+                 else:
+                     print ('Valor invalido:Recuerde agregar punto')
      else:
-         print('No')
+         print ('Valor invalido')
+     
        
         #print ('salio')
  else:

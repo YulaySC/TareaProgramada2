@@ -190,18 +190,18 @@ def RetlexicalTYPE(data):
 
 def PARENT(data):
     elementos=RetlexicalTYPE(data)
-    cont=len(elementos)-1
+    cont=0
     contador=len(elementos)-1
     
     #print (cont)
     #print(contador)
     existe=False
-    while(cont>=0):
+    while(cont<(len(elementos)-1)):
         if((elementos[cont])=='LPAREN'):
             if((elementos[contador-1])=='RPAREN'):
                 existe=True
                 return (existe)
-        cont=cont-1
+        cont=cont+1
 
     return (existe)
             
