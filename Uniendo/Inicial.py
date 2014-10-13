@@ -13,7 +13,7 @@ def mQuit():
 
 ##""" Llamar a las funciones (lexico, sintactico) de Tkinter a dll """
 ##
-##def llamarFunciones():
+##def openConsola():
 ##    from jugar import main
 ##    from director import Director
 ##    from escenas import EscenaTitulo
@@ -26,15 +26,13 @@ def mQuit():
 ##    
 ##
 
+
 """Definición de comandos para la ventana Consola """
 def openConsola():
     mGuiConsola=Tk()
     mGuiConsola.config(bg="white")
     mGuiConsola.geometry('250x250+900+100')#tamaño de la ventana principal
     mGuiConsola.title('Consola ~SWI Prolog~')#Nombre de la ventana principal
-    
-
-
 
     
 """ Definir la ventana principal """
