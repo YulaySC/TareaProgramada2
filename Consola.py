@@ -280,8 +280,8 @@ def PARENT(data):
     cont=len(elementos)-1
     contador=len(elementos)-1
     
-    print (cont)
-    print(contador)
+    #print (cont)
+    #print(contador)
     existe=False
     while(cont>=0):
         if((elementos[cont])=='LPAREN'):
@@ -319,7 +319,8 @@ def lexicalVALUE (data):
             return(tok.value)
 
 def sintaxis():
- print ('Welcome to SWI-Prolog (Multi-threaded, 32 bits, Version 6.6.4 n/Copyright (c) 1990-2013 University of Amsterdam, VU Amsterdam n/SWI-Prolog comes with ABSOLUTELY NO WARRANTY. This is free software, n/and you are welcome to redistribute it under certain conditions. n/Please visit http://www.swi-prolog.org for details. n/For help, use ?- help(Topic). or ?- apropos(Word).')
+ list1.insert(END,"SWI")
+ #print ('Welcome to SWI-Prolog (Multi-threaded, 32 bits, Version 6.6.4 n/Copyright (c) 1990-2013 University of Amsterdam, VU Amsterdam n/SWI-Prolog comes with ABSOLUTELY NO WARRANTY. This is free software, n/and you are welcome to redistribute it under certain conditions. n/Please visit http://www.swi-prolog.org for details. n/For help, use ?- help(Topic). or ?- apropos(Word).')
  val1=input()
  datos=[]
  lexer = lex.lex()
@@ -333,25 +334,33 @@ def sintaxis():
          print ('>>')
          val1=input()
          data=val1
-         cont=0
+         #cont=0
          elementos=RetlexicalTYPE(data)
+         paren=PARENT(data)
          contlistelem=len(elementos)-1
-         if (elementos[0]=='NAME'):
-             if(elementos[contlistelem]=='PERIOD'):
-                 if (val1!='</define>.'):
-                     datos.append(val1)
-        #print(datos[cont])
-                     cont=cont+1
-                     print ('>>')
-                     val1=input()
-    #print ('salio')
          if (val1=='</define>.'):
              y=True
+         if (elementos[0]=='NAME'):
+             if(elementos[contlistelem]=='PERIOD'):
+                 if(paren==True):
+                     datos.append(val1)
+        #print(datos[cont])
+                     #cont=cont+1
+                     #print ('>>')
+                     #val1=input(
+                 else:
+                     print ('Valor invalido:Defina parametros entre paréntesis')
+
+             else:
+                 print ('Valor invalido:Recuerde agregar punto')
+                 #print ('>>')
+                 #val1=input()        
+    #print ('salio')
          else:
              print ('Valor invalido')
-             print ('>>')
-             val1=input()
-        
+             #print ('>>')
+             #val1=input()
+         
  if(val1=='</define>.'):
      print('?')
      val2=input()
@@ -359,10 +368,11 @@ def sintaxis():
      x=False
      while(x==False):
          for i in range(0,len(datos)):
-             cont=cont-1
-             if(val2==datos[cont]):
-                 boolean=True
-             cont=cont-1
+             cont=len(datos)-1
+             while(cont>=0):
+                 if(val2==datos[cont]):
+                     boolean=True
+                 cont=cont-1
          x=True
      if(boolean==True):
          print('Yes')
@@ -381,7 +391,7 @@ def sintaxis():
 #        if 
     
 
-            
+
 ###############################
 
 
@@ -421,7 +431,7 @@ list1.insert(END, ">>")
 def insertar_en_listbox():
 
     if mivalor.get() != '':
-        """
+        
         if mivalor.get() == "help":
             
             list1.insert(END,'')
@@ -442,115 +452,9 @@ def insertar_en_listbox():
             list1.insert(END, "")
             #list1.insert(">>")
 
-        if mivalor.get() == "-h":
-            list1.insert(END,'')
-            list1.insert(END,'HELP:            Muestra la lista de comandos de la shell')
-            list1.insert(END,"-H:              Muestar la lista de los comandos de la shell")
-            list1.insert(END,'DEL:             Elimina el archivo marcado')
-            list1.insert(END,'XDEL:            Elimina la carpeta marcada')
-            list1.insert(END,'CLS                Borra la pantalla')
-            list1.insert(END,'TIME:            Muestra la hora y la fecha del sistema')
-            list1.insert(END,'PRINT:           Muestra mensajes en la pantalla')
-            list1.insert(END,'READ:            Abre el archivo en modo escritura')
-            list1.insert(END,'WANT:            Buasca un todos los archivo con extension a elegir')
-            list1.insert(END,'DIR:             Muestra el directorio actual')
-            list1.insert(END,'CD:              Cambia de directorio al directorio selecionado')
-            list1.insert(END,'LAST:            Muestra la fecha de la ultima midificacion del un archivo marcado')
-            list1.insert(END,'EXIT:            Sale de la consola de comandos')
-            list1.insert(END, "")
-            #list1.insert(END, ">>")
 
-        if mivalor.get() == "HELP":
-            
-            list1.insert(END,'')
-            list1.insert(END,'HELP:            Muestra la lista de comandos de la shell')
-            list1.insert(END,"-H:              Muestar la lista de los comandos de la shell")
-            list1.insert(END,'DEL:             Elimina el archivo marcado')
-            list1.insert(END,'XDEL:            Elimina la carpeta marcada')
-            list1.insert(END,'CLS                Borra la pantalla')
-            list1.insert(END,'TIME:            Muestra la hora y la fecha del sistema')
-            list1.insert(END,'PRINT:           Muestra mensajes en la pantalla')
-            list1.insert(END,'READ:            Abre el archivo en modo escritura')
-            list1.insert(END,'WANT:            Buasca un todos los archivo con extension a elegir')
-            list1.insert(END,'DIR:             Muestra el directorio actual')
-            list1.insert(END,'CD:              Cambia de directorio al directorio selecionado')
-            list1.insert(END,'LAST:            Muestra la fecha de la ultima midificacion del un archivo marcado')
-            list1.insert(END,'EXIT:            Sale de la consola de comandos')
-            list1.insert(END, "")
-            list1.insert(END, ">>")
-
-        if mivalor.get() == "-H":
-            list1.insert(END,'')
-            list1.insert(END,'HELP:            Muestra la lista de comandos de la shell')
-            list1.insert(END,"-H:              Muestar la lista de los comandos de la shell")
-            list1.insert(END,'DEL:             Elimina el archivo marcado')
-            list1.insert(END,'XDEL:            Elimina la carpeta marcada')
-            list1.insert(END,'CLS                Borra la pantalla')
-            list1.insert(END,'TIME:            Muestra la hora y fecha del sistema')
-            list1.insert(END,'PRINT:           Muestra mensajes en la pantalla')
-            list1.insert(END,'READ:            Abre el archivo en modo escritura')
-            list1.insert(END,'WANT:            Buasca un todos los archivo con extension a elegir')
-            list1.insert(END,'DIR:             Muestra el directorio actual')
-            list1.insert(END,'CD:              Cambia de directorio al directorio selecionado')
-            list1.insert(END,'LAST:            Muestra la fecha de la ultima midificacion del un archivo marcado')
-            list1.insert(END,'TIME             Muestra la hora del sistema')
-            list1.insert(END,'EXIT:            Sale de la consola de comandos')
-            list1.insert(END, "")
-            #list1.insert(END, ">>")
-            """
-        """
-        if mivalor.get().startswith("del") == True:
-
-            rut = mivalor.get()[4:]
-
-            try:
-                os.remove(rut)
-                list1.insert(END,'EL archivo a sido eliminado con exito.')
-
-            except:
-                list1.insert(END,'ERROR El archivo no a podido ser eliminado.')
-
-            list1.insert(END, "")
-            list1.insert(END, ">>")
-
-        if mivalor.get().startswith("xdel") == True:
-
-            arc1 = mivalor.get()[5:]
-            boo = True
-
-            try:
-                shutil.rmtree(arc1, boo)
-                list1.insert(END, "\nLa carpeta a sido eliminada.")
-
-            except:
-                list1.insert(END,"ERROR La carpeta no a podido ser eliminado.")
-
-            list1.insert(END, "")
-            list1.insert(END, ">>")
-        """
-
-             
-        if mivalor.get().startswith("read") == True:
-
-            red = mivalor.get()[5:]
-
-            try:
-                archi = open(red,'r')
-                linea=archi.readline()
-                while linea!="":
-                    list1.insert(END,linea)
-                    linea=archi.readline()
-
-            except:
-                list1.insert(END,"ERROR El archivo no a podido ser abierto en mode lectura.")
-
-            list1.insert(END, "")
-            list1.insert(END, ">>")
-
-
-        elif mivalor.get() == "inicio":
-            #from versionV2 import sintaxis
-            #if mivalor.get() == "sintaxis":
+        if mivalor.get() == "inicio":
+            from versionV3 import sintaxis
             list1.insert(END, "funca")
             return sintaxis()
 

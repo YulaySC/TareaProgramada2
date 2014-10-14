@@ -173,6 +173,7 @@ def lexicalTYPE (data):
            
         for tok in lexer:
             return (tok.type)
+        
 def RetlexicalTYPE(data):
     lexer = lex.lex()
     lexer.input(data)
