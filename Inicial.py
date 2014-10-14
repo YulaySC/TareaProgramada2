@@ -17,12 +17,9 @@ def mQuit():
 
 def openConsolaTK():
     import Consola
-#   from director import Director
-#   from escenas import EscenaTitulo
     def main():
-        "Ejecutar el juego."
-##        director = Director("**Snake**")
-##        director.ejecutar(EscenaTitulo(), 10)
+        "Ejecutar la consola."
+
     if __name__ == "__main__":
         main()
     
