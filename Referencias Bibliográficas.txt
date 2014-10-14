@@ -4,3 +4,22 @@ Nombre página. "Titulo de página". Recuperado de: /URL
 
 elhacker.net. "Tema: [Python/Tkinter](Kyurem v2.0)Consola de comandos hecha en python". Recuperado de:
 http://foro.elhacker.net/scripting/pythontkinterkyurem_v20consola_de_comandos_hecha_en_python-t396560.0.html
+
+EsCompiladores. "PLY, una Implementación de lex y yacc en Python". Recuperado de:
+http://escompiladores.wordpress.com/2014/03/11/ply-una-implementacion-de-lex-y-yacc-en-python/
+
+Mclibre.org. "Introducción a la programación. Entrada y salida". Recuperado de:
+http://www.mclibre.org/consultar/python/lecciones/python_entrada_salida.html
+
+Python para programadores con experiencia. "1.8 Todo sobre listas". Recuperado de:
+http://es.diveintopython.net/odbchelper_list.html
+
+Python Software Foundation. "getch 1.0". Recuperado de:
+https://pypi.python.org/pypi/getch
+
+Python Software Foundation. "ply 3.4". Recuperado de:
+https://pypi.python.org/pypi/ply
+
+
+
+
