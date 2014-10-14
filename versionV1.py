@@ -5,7 +5,7 @@ def sintaxis():
  datos=[]
  if (val1=='<define>'):
      while(val1=='<define>'):
-    #print('entro')
+         print('entro')
          print ('>>')
          val1=input()
          cont=0
@@ -16,7 +16,7 @@ def sintaxis():
              cont=cont+1
              print ('>>')
              val1=input()
-    #print ('salio')
+             print ('salio')
              if (val1=='</define>.'):
                  print('?')
                  val2=input()

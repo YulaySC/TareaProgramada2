@@ -1,0 +1,6 @@
+FORMATO APA
+Nombre página. "Titulo de página". Recuperado de: /URL
+
+
+elhacker.net. "Tema: [Python/Tkinter](Kyurem v2.0)Consola de comandos hecha en python". Recuperado de:
+http://foro.elhacker.net/scripting/pythontkinterkyurem_v20consola_de_comandos_hecha_en_python-t396560.0.html

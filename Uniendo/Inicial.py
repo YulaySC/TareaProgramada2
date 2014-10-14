@@ -1,6 +1,8 @@
 import sys
 from tkinter import *
 
+
+
 """ Definición de funciones para la barra de menús """
 #-----------------------------------------------------------------------------#
 """ Para cerrar la ventana principal """
@@ -11,20 +13,20 @@ def mQuit():
         return
 
 
-##""" Llamar a las funciones (lexico, sintactico) de Tkinter a dll """
-##
-##def openConsola():
-##    from jugar import main
-##    from director import Director
-##    from escenas import EscenaTitulo
-##    def main():
-##        "Ejecutar el juego."
+""" Llamar a las funciones (lexico, sintactico) de Tkinter a dll """
+
+def openConsolaTK():
+    import Consola
+#   from director import Director
+#   from escenas import EscenaTitulo
+    def main():
+        "Ejecutar el juego."
 ##        director = Director("**Snake**")
 ##        director.ejecutar(EscenaTitulo(), 10)
-##    if __name__ == "__main__":
-##        main()
-##    
-##
+    if __name__ == "__main__":
+        main()
+    
+
 
 
 """Definición de comandos para la ventana Consola """
@@ -53,7 +55,7 @@ mlabel = Label(mGui, text='~Consola de Prolog en Python~',fg='white', bg='black'
 
 
 """ Botones dentro de la ventana principal """
-mbuttonConsola = Button(mGui, text='Ir a consola', command = openConsola, fg='black', bg='sky blue').place(x=70, y=20)
+mbuttonConsola = Button(mGui, text='Ir a consola', command = openConsolaTK, fg='black', bg='sky blue').place(x=70, y=20)
 mbuttonBaseConocimientos = Button(mGui, text='Base de Conocimientos',command = openConsola, fg='black', bg='sky blue').place(x=320, y=20)
 
 
