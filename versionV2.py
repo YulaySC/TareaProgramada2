@@ -237,56 +237,51 @@ def sintaxis():
  datos=[]
  lexer = lex.lex()
  elementos=[]
+ y=False
+ boolean= False
  if (val1=='<define>'):
-     boolean= False
-     while(val1=='<define>'):
+     
+     while(y==False):
     #print('entro')
          print ('>>')
          val1=input()
          data=val1
          cont=0
-         
-         #print (t_NUMBER(data))
-         #print (lexicalTYPE(data))
-         #if (lexicalTYPE(data)==t_NAME):
          elementos=RetlexicalTYPE(data)
          contlistelem=len(elementos)-1
          if (elementos[0]=='NAME'):
              if(elementos[contlistelem]=='PERIOD'):
-                 while (val1!='</define>.'):
+                 if (val1!='</define>.'):
                      datos.append(val1)
         #print(datos[cont])
                      cont=cont+1
                      print ('>>')
                      val1=input()
     #print ('salio')
-                     if (val1=='</define>.'):
-                         print('?')
-                         val2=input()
-                         int=0
-                         x=False
-                         while(x==False):
-                             for i in range(0,len(datos)):
-                                 cont=cont-1
-                                 if(val2==datos[cont]):
-                                     boolean=True
-                                 cont=cont-1
-                             x=True
-        
-        #for i in range(0,(datos)):
-         #   while(int<=cont):
-          #      revisar=datos[int]
-           #     if(revisar==val2):
-            #        boolean= True
-             #   int=int+1
-                 if(boolean==True):
-                     print('Yes')
-                 else:
-                     print('No')
+         if (val1=='</define>.'):
+             y=True
          else:
              print ('Valor invalido')
              print ('>>')
              val1=input()
+        
+ if(val1=='</define>.'):
+     print('?')
+     val2=input()
+     int=0
+     x=False
+     while(x==False):
+         for i in range(0,len(datos)):
+             cont=cont-1
+             if(val2==datos[cont]):
+                 boolean=True
+             cont=cont-1
+         x=True
+     if(boolean==True):
+         print('Yes')
+     else:
+         print('No')
+       
         #print ('salio')
  else:
      print('error')
